@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تواصل معنا</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --accent: #c8502a;
+    --accent-dark: #9e3d1e;
+    --gold: #b8922a;
+    --muted: #7a7265;
+    --border: #d4cfc4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 10% 20%, rgba(200,80,42,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(184,146,42,0.06) 0%, transparent 50%);
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .logo span { color: var(--accent); }
+
+  .owner-btn {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    padding: 0.45rem 1.1rem;
+    border-radius: 2rem;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .owner-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+    position: relative;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 380px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── FORM CARD ── */
+  .card-wrap {
+    max-width: 520px;
+    margin: 2.5rem auto 5rem;
+    padding: 0 1.5rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    padding: 2.5rem;
+    box-shadow: 0 4px 32px rgba(15,14,13,0.07), 0 1px 4px rgba(15,14,13,0.04);
+  }
+
+  .field { margin-bottom: 1.4rem; }
+
+  label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 0.6rem;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    resize: none;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(200,80,42,0.1);
+  }
+  textarea { height: 110px; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0.6rem;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--accent-dark); }
+  .submit-btn:active { transform: scale(0.98); }
+
+  /* success */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 0.4s ease;
+  }
+  .success-msg .check {
+    width: 56px; height: 56px;
+    background: #e8f5e9;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.6rem;
+  }
+  .success-msg h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .success-msg p { color: var(--muted); font-size: 0.95rem; }
+  .reset-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* ── OWNER PANEL ── */
+  .owner-panel {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,14,13,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+  .owner-panel.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .panel-box {
+    background: #fff;
+    border-radius: 1.2rem;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem 1.8rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--cream);
+  }
+  .panel-header h2 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .panel-header .badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .close-panel {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--muted);
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .close-panel:hover { color: var(--accent); }
+
+  /* password gate */
+  .pw-gate {
+    padding: 2.5rem;
+    text-align: center;
+  }
+  .pw-gate h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .pw-gate p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .pw-row {
+    display: flex;
+    gap: 0.6rem;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .pw-row input {
+    flex: 1;
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+  }
+  .pw-row button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0.6rem;
+    padding: 0 1.2rem;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .pw-row button:hover { background: var(--accent-dark); }
+  .pw-error {
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
+    display: none;
+  }
+
+  /* submissions list */
+  .submissions-view { display: none; }
+
+  .panel-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.8rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .clear-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.4rem;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .clear-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .sub-list {
+    padding: 1.2rem 1.8rem;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted);
+  }
+  .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.7rem; }
+  .empty-state p { font-size: 0.95rem; }
+
+  .sub-item {
+    border: 1px solid var(--border);
+    border-radius: 0.7rem;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 0.9rem;
+    background: var(--paper);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+  }
+  .sub-item.new-item {
+    border-color: var(--accent);
+    background: #fff8f6;
+  }
+  .new-badge {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.9rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sub-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .sub-phone {
+    font-size: 0.88rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    direction: ltr;
+    display: inline-block;
+  }
+  .sub-msg {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 0.6rem;
+    margin-top: 0.4rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .sub-time {
+    font-size: 0.72rem;
+    color: #bbb;
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    color: var(--border);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">تواصل<span>.</span></div>
+  <button class="owner-btn" onclick="openPanel()">🔐 لوحة المالك</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">نحن هنا</div>
+  <h1>تحدّث إلينا<br><em>بكل حرية</em></h1>
+  <p>اترك اسمك ورقمك ورسالتك — وسنكون معك في أقرب وقت.</p>
+</div>
+
+<!-- FORM CARD -->
+<div class="card-wrap">
+  <div class="card">
+
+    <!-- The Form -->
+    <div id="formSection">
+      <div class="field">
+        <label>الاسم الكامل</label>
+        <input type="text" id="nameInput" placeholder="مثال: أحمد محمد" />
+      </div>
+      <div class="field">
+        <label>رقم الهاتف</label>
+        <input type="tel" id="phoneInput" placeholder="01XXXXXXXXX" />
+      </div>
+      <div class="divider">رسالتك</div>
+      <div class="field">
+        <label>موضوع التواصل</label>
+        <textarea id="msgInput" placeholder="اكتب رسالتك هنا..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">إرسال الرسالة ✦</button>
+    </div>
+
+    <!-- Success State -->
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <h3>تم الإرسال بنجاح!</h3>
+      <p>شكراً لتواصلك، سيتم الرد عليك قريباً.</p>
+      <span class="reset-link" onclick="resetForm()">إرسال رسالة أخرى</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- OWNER PANEL -->
+<div class="owner-panel" id="ownerPanel">
+  <div class="panel-box">
+
+    <div class="panel-header">
+      <div>
+        <h2>📋 لوحة المالك <span class="badge" id="countBadge">0</span></h2>
+      </div>
+      <button class="close-panel" onclick="closePanel()">✕</button>
+    </div>
+
+    <!-- Password Gate -->
+    <div class="pw-gate" id="pwGate">
+      <div style="font-size:2rem;margin-bottom:0.8rem">🔑</div>
+      <h3>أدخل كلمة المرور</h3>
+      <p>هذه اللوحة للمالك فقط</p>
+      <div class="pw-row">
+        <input type="password" id="pwInput" placeholder="••••••" onkeydown="if(event.key==='Enter')checkPw()" />
+        <button onclick="checkPw()">دخول</button>
+      </div>
+      <div class="pw-error" id="pwError">كلمة المرور غلط، حاول تاني</div>
+      <p style="margin-top:1.2rem;font-size:0.78rem;color:#bbb">كلمة المرور الافتراضية: <strong>admin123</strong></p>
+    </div>
+
+    <!-- Submissions View -->
+    <div class="submissions-view" id="submissionsView">
+      <div class="panel-toolbar">
+        <span id="subCount">لا توجد رسائل بعد</span>
+        <button class="clear-btn" onclick="clearAll()">مسح الكل</button>
+      </div>
+      <div class="sub-list" id="subList"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  
+  let submissions = JSON.parse(localStorage.getItem('form_submissions') || '[]');
+  let lastSeenCount = parseInt(localStorage.getItem('last_seen') || '0');
+  let authenticated = false;
+
+  function saveData() {
+    localStorage.setItem('form_submissions', JSON.stringify(submissions));
+  }
+
+  // ── FORM SUBMIT ──
+  function submitForm() {
+    const name  = document.getElementById('nameInput').value.trim();
+    const phone = document.getElementById('phoneInput').value.trim();
+    const msg   = document.getElementById('msgInput').value.trim();
+
+    if (!name) { shake('nameInput'); return; }
+    if (!phone){ shake('phoneInput'); return; }
+    if (!msg)  { shake('msgInput'); return; }
+
+    const entry = {
+      name, phone, msg,
+      time: new Date().toLocaleString('ar-EG'),
+      id: Date.now(),
+      isNew: true
+    };
+
+    submissions.unshift(entry);
+    saveData();
+    updateBadge();
+
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('successMsg').style.display  = 'block';
+  }
+
+  function resetForm() {
+    document.getElementById('nameInput').value  = '';
+    document.getElementById('phoneInput').value = '';
+    document.getElementById('msgInput').value   = '';
+    document.getElementById('formSection').style.display = 'block';
+    document.getElementById('successMsg').style.display  = 'none';
+  }
+
+  function shake(id) {
+    const el = document.getElementById(id);
+    el.style.borderColor = 'var(--accent)';
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = '';
+    el.focus();
+    setTimeout(() => el.style.borderColor = '', 1500);
+  }
+
+  // ── BADGE ──
+  function updateBadge() {
+    const newCount = submissions.filter(s => s.isNew).length;
+    const badge = document.getElementById('countBadge');
+    badge.textContent = submissions.length;
+    badge.style.background = newCount > 0 ? 'var(--accent)' : '#aaa';
+  }
+
+  updateBadge();
+
+  // ── PANEL ──
+  function openPanel() {
+    document.getElementById('ownerPanel').classList.add('open');
+    if (!authenticated) {
+      document.getElementById('pwGate').style.display = 'block';
+      document.getElementById('submissionsView').style.display = 'none';
+      setTimeout(() => document.getElementById('pwInput').focus(), 200);
+    } else {
+      renderSubmissions();
+    }
+  }
+
+  function closePanel() {
+    document.getElementById('ownerPanel').classList.remove('open');
+  }
+
+  // close on backdrop click
+  document.getElementById('ownerPanel').addEventListener('click', function(e) {
+    if (e.target === this) closePanel();
+  });
+
+  function checkPw() {
+    const val = document.getElementById('pwInput').value;
+    if (val === OWNER_PW) {
+      authenticated = true;
+      document.getElementById('pwGate').style.display = 'none';
+      document.getElementById('submissionsView').style.display = 'block';
+      renderSubmissions();
+    } else {
+      document.getElementById('pwError').style.display = 'block';
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwInput').focus();
+    }
+  }
+
+  function renderSubmissions() {
+    const list = document.getElementById('subList');
+    const countEl = document.getElementById('subCount');
+
+    // mark all as seen
+    submissions.forEach(s => s.isNew = false);
+    saveData();
+    updateBadge();
+
+    if (submissions.length === 0) {
+      list.innerHTML = `
+        <div class="empty-state">
+          <div class="icon">📭</div>
+          <p>لا توجد رسائل بعد</p>
+        </div>`;
+      countEl.textContent = 'لا توجد رسائل بعد';
+      return;
+    }
+
+    countEl.textContent = `${submissions.length} رسالة`;
+    list.innerHTML = submissions.map(s => `
+      <div class="sub-item ${s.isNew ? 'new-item' : ''}">
+        ${s.isNew ? '<span class="new-badge">جديد</span>' : ''}
+        <div class="sub-name">👤 ${esc(s.name)}</div>
+        <div class="sub-phone">📞 ${esc(s.phone)}</div>
+        <div class="sub-msg">💬 ${esc(s.msg)}</div>
+        <div class="sub-time">🕐 ${esc(s.time)}</div>
+      </div>
+    `).join('');
+  }
+
+  function clearAll() {
+    if (!confirm('هل تريد مسح كل الرسائل؟')) return;
+    submissions = [];
+    saveData();
+    updateBadge();
+    renderSubmissions();
+  }
+
+  function esc(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+
+</body>
+</html>
